@@ -1,0 +1,29 @@
+{
+  "name": "episode1",
+  "version": "1.0.0",
+  "description": "React JS Episode 1",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rushi812/react-study.git"
+  },
+  "author": "Rushiraj Brahmbhatt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rushi812/react-study/issues"
+  },
+  "homepage": "https://github.com/rushi812/react-study#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "browserslist": [
+    "last 2 versions of Chrome"
+  ]
+}
