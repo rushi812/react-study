@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 
 /**
  * Creating React element using React.createElement
+ * React.createElement => ReactElement - JS Object => HTMLElement(render)
  */
 
 // const parent = React.createElement("div", { id: "parent" }, [
@@ -34,6 +35,7 @@ import ReactDOM from "react-dom/client";
 
 /**
  * Creating React element using JSX
+ * JSX Element => Babel transpiles it to React.createElement => ReactElement - JS Object => HTMLElement(render)
  */
 
 const parent = (
