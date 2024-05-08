@@ -1,7 +1,97 @@
-#heading1 {
-  color: red;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-#heading2 {
-  color: green;
+html,
+body {
+  font-size: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  padding: 1rem 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.logo-container > img {
+  width: auto;
+  height: 10rem;
+}
+
+.nav-items > ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-items > ul > li {
+  font-size: 1.5rem;
+  margin: 2rem;
+  padding: 1rem;
+  font-weight: 500;
+}
+
+.search {
+  margin: 2rem 0;
+}
+
+.res-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.2rem;
+}
+
+.res-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 27rem;
+  height: auto;
+  transition: all ease 0.1s;
+}
+
+.res-card:hover {
+  transform: scale(0.95);
+  cursor: pointer;
+}
+
+.res-image {
+  width: 100%;
+  height: 18rem;
+  filter: drop-shadow(rgba(0, 0, 0, 0.1) 0px 2px 8px);
+}
+
+.res-image > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
+  object-position: center;
+}
+
+.res-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0 1.2rem;
+}
+
+.res-title {
+  font-size: 1.8rem;
+}
+
+.res-rating {
+  font-size: 1.6rem;
+}
+
+.res-cuisine {
+  font-size: 1.6rem;
+}
+
+.res-address {
+  font-size: 1.6rem;
 }
