@@ -14,7 +14,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid black;
+  padding: 0 2rem;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
 }
 
 .body {
@@ -29,13 +30,20 @@ body {
 .nav-items > ul {
   display: flex;
   list-style-type: none;
+  align-items: center;
+  gap: 3rem;
 }
 
 .nav-items > ul > li {
   font-size: 1.5rem;
-  margin: 2rem;
-  padding: 1rem;
   font-weight: 500;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all ease 250ms;
+}
+
+.nav-items > ul > li:hover {
+  color: rgba(0, 0, 0, 0.5);
 }
 
 .search {
@@ -54,7 +62,7 @@ body {
   gap: 1.5rem;
   width: 27rem;
   height: auto;
-  transition: all ease 0.1s;
+  transition: all ease 250ms;
 }
 
 .res-card:hover {
@@ -109,4 +117,36 @@ body {
   border-radius: 1.8rem;
   cursor: pointer;
   font-weight: 500;
+}
+
+.shimmer-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 27rem;
+  height: auto;
+}
+
+.shimmer-image {
+  background-color: #f0f0f0;
+  width: 100%;
+  height: 18rem;
+  border-radius: 2rem;
+}
+
+.shimmer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0 1.2rem;
+}
+
+.shimmer-info > .info {
+  background-color: #f0f0f0;
+  height: 2rem;
+  width: 20rem;
+}
+
+.shimmer-info > .info:nth-of-type(2n + 1) {
+  width: 24rem;
 }
