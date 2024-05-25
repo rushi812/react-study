@@ -4,10 +4,12 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
+  const [filteredResList, setFilteredResList] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const handleFilterRatings = () => {
     const filteredList = resList.filter((res) => res.info.avgRating > 4);
-    setResList(filteredList);
+    setFilteredResList(filteredList);
   };
 
   const fetchData = async () => {
@@ -16,7 +18,10 @@ const Body = () => {
     );
     const res = await data.json();
     setResList(
-      res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      res?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredResList(
+      res?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -24,18 +29,33 @@ const Body = () => {
     fetchData();
   }, []);
 
+  const handleSearch = () => {
+    const filteredList = resList.filter((res) =>
+      res.info.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredResList(filteredList);
+  };
+
   return (
     <div className="body">
-      {/* <div className="search">Search...</div> */}
       <div className="filter-container">
-        <button className="filter-btn" onClick={handleFilterRatings}>
+        <div className="search">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+        <button className="global-btn" onClick={handleFilterRatings}>
           ⭐️ Ratings 4+
         </button>
       </div>
       <div className="res-container">
-        {!resList.length
-          ? Array(10).fill(<Shimmer />)
-          : resList.map((restaurant) => (
+        {!filteredResList?.length
+          ? [...Array(10)].map((e, i) => <Shimmer key={`shimmer${i}`} />)
+          : filteredResList.map((restaurant) => (
               <RestaurantCard key={restaurant.info.id} resData={restaurant} />
             ))}
       </div>

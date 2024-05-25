@@ -1,6 +1,7 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html,
@@ -27,11 +28,17 @@ body {
   height: 10rem;
 }
 
+.nav-items {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
 .nav-items > ul {
   display: flex;
   list-style-type: none;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .nav-items > ul > li {
@@ -44,10 +51,6 @@ body {
 
 .nav-items > ul > li:hover {
   color: rgba(0, 0, 0, 0.5);
-}
-
-.search {
-  margin: 2rem 0;
 }
 
 .res-container {
@@ -107,16 +110,45 @@ body {
 }
 
 .filter-container {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
   margin-bottom: 2rem;
 }
 
-.filter-btn {
+.global-btn {
   background-color: #ffffff;
   border: 1px solid rgba(2, 6, 12, 0.6);
   padding: 0.8rem 1.2rem;
   border-radius: 1.8rem;
   cursor: pointer;
   font-weight: 500;
+  min-width: 10rem;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 36rem;
+}
+
+.search > input {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: none;
+  min-height: 4rem;
+  flex: 1;
+}
+
+.search > button {
+  background-color: #f0f0f0;
+  border: 1px solid lightgray;
+  padding: 1rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  min-height: 4rem;
 }
 
 .shimmer-card {
