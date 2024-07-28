@@ -12,7 +12,7 @@ const RestaurantCard = ({ resData }) => {
       <div className="res-info">
         <h3 className="res-title">{name}</h3>
         <h4 className="res-rating">
-          <span>{avgRating.toFixed(1)} Stars • </span>
+          <span>⭐️ {avgRating.toFixed(1)} • </span>
           <span>{sla.slaString}</span>
         </h4>
         <p className="res-cuisine">{cuisines.join(", ")}</p>

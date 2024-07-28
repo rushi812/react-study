@@ -1,6 +1,5 @@
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
@@ -9,6 +8,12 @@ body {
   font-size: 10px;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  color: #000;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
 }
 
 .header {
@@ -46,11 +51,18 @@ body {
   font-weight: 500;
   padding: 1rem;
   cursor: pointer;
+}
+
+.nav-items > ul > li > a {
   transition: all ease 250ms;
 }
 
-.nav-items > ul > li:hover {
+.nav-items > ul > li > a:hover {
   color: rgba(0, 0, 0, 0.5);
+}
+
+.main {
+  margin: 10px;
 }
 
 .res-container {
@@ -181,4 +193,14 @@ body {
 
 .shimmer-info > .info:nth-of-type(2n + 1) {
   width: 24rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu > ul > li {
+  font-size: 1.5rem;
 }

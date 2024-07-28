@@ -1,6 +1,11 @@
-import RestaurantCard from "./RestaurantCard";
 import { useEffect, useState } from "react";
+
+import { API_URL } from "../utils/constants";
+
+import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+import { getRestaurantUrl } from "../utils/urls";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
@@ -13,15 +18,16 @@ const Body = () => {
   };
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.022505&lng=72.5713621&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(API_URL);
     const res = await data.json();
+    const restautantsList = res?.data?.cards.find(
+      (r) => r?.card?.card?.id === "restaurant_grid_listing"
+    );
     setResList(
-      res?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      restautantsList?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredResList(
-      res?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      restautantsList?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 
@@ -56,7 +62,12 @@ const Body = () => {
         {!filteredResList?.length
           ? [...Array(10)].map((e, i) => <Shimmer key={`shimmer${i}`} />)
           : filteredResList.map((restaurant) => (
-              <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+              <Link
+                to={getRestaurantUrl(restaurant.info.id)}
+                key={restaurant.info.id}
+              >
+                <RestaurantCard resData={restaurant} />
+              </Link>
             ))}
       </div>
     </div>
