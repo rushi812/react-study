@@ -43,22 +43,31 @@ const Body = () => {
   };
 
   return (
-    <div className="body">
-      <div className="filter-container">
-        <div className="search">
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2">
           <input
             type="text"
             placeholder="Search..."
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
+            className="border-[1px] border-black p-2 h-9 rounded-lg"
           />
-          <button onClick={handleSearch}>Search</button>
+          <button
+            onClick={handleSearch}
+            className="flex items-center bg-gray-200 p-2 rounded-lg transition-all ease-linear hover:bg-gray-300 h-9"
+          >
+            Search
+          </button>
         </div>
-        <button className="global-btn" onClick={handleFilterRatings}>
+        <button
+          className="flex items-center bg-gray-200 p-2 rounded-lg transition-all ease-linear hover:bg-gray-300 h-9"
+          onClick={handleFilterRatings}
+        >
           ⭐️ Ratings 4+
         </button>
       </div>
-      <div className="res-container">
+      <div className="flex gap-10 flex-wrap justify-start">
         {!filteredResList?.length
           ? [...Array(10)].map((e, i) => <Shimmer key={`shimmer${i}`} />)
           : filteredResList.map((restaurant) => (
