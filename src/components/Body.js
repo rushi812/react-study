@@ -61,7 +61,7 @@ const Body = () => {
           </button>
         </div>
         <button
-          className="flex items-center bg-gray-200 p-2 rounded-lg transition-all ease-linear hover:bg-gray-300 h-9"
+          className="flex items-center  p-2 rounded-lg transition-all ease-linea border-[1px] border-gray-400 border-solid hover:bg-gray-100 h-9"
           onClick={handleFilterRatings}
         >
           ⭐️ Ratings 4+
