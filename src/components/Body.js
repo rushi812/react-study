@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { API_URL } from "../utils/constants";
 
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { getRestaurantUrl } from "../utils/urls";
@@ -11,6 +11,8 @@ const Body = () => {
   const [resList, setResList] = useState([]);
   const [filteredResList, setFilteredResList] = useState([]);
   const [searchText, setSearchText] = useState("");
+
+  const RestaurantCardPromoted = withDiscountLabel(RestaurantCard);
 
   const handleFilterRatings = () => {
     const filteredList = resList.filter((res) => res.info.avgRating > 4);
@@ -75,7 +77,11 @@ const Body = () => {
                 to={getRestaurantUrl(restaurant.info.id)}
                 key={restaurant.info.id}
               >
-                <RestaurantCard resData={restaurant} />
+                {restaurant?.info?.aggregatedDiscountInfoV3 ? (
+                  <RestaurantCardPromoted resData={restaurant} />
+                ) : (
+                  <RestaurantCard resData={restaurant} />
+                )}
               </Link>
             ))}
       </div>

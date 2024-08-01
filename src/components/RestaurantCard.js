@@ -5,7 +5,7 @@ const RestaurantCard = ({ resData }) => {
     resData.info;
 
   return (
-    <div className="flex flex-col gap-3 transition-all ease-linear hover:scale-95 w-[250px]">
+    <div className="flex flex-col gap-3 transition-all ease-linear hover:scale-[.97] w-[250px]">
       <div className="h-44 rounded-lg overflow-hidden">
         <img
           alt="res-logo"
@@ -26,6 +26,21 @@ const RestaurantCard = ({ resData }) => {
       </div>
     </div>
   );
+};
+
+export const withDiscountLabel = (ResCardComponent) => {
+  return (props) => {
+    const { aggregatedDiscountInfoV3 } = props.resData.info;
+    const { header, subHeader } = aggregatedDiscountInfoV3;
+    return (
+      <div className="relative transition-all ease-linear hover:scale-[.97]">
+        <label className="absolute left-4 top-32 bg-orange-100 text-black text-xl px-2 z-[1]">
+          {header} {subHeader}
+        </label>
+        <ResCardComponent {...props} />
+      </div>
+    );
+  };
 };
 
 export default RestaurantCard;
