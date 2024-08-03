@@ -11,8 +11,11 @@ const useRestaurantMenu = (resId) => {
 
     const info = data?.data?.cards[2]?.card?.card?.info;
     const menuInfo =
-      data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-        ?.card?.itemCards;
+      data?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.filter(
+        (c) =>
+          c?.card?.card["@type"] ===
+          "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+      );
 
     setResInfo(info);
     setMenuItems(menuInfo);
