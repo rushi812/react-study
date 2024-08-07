@@ -1,8 +1,13 @@
+import { useContext } from "react";
+
 import { IMAGE_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
 
 const RestaurantCard = ({ resData }) => {
   const { cloudinaryImageId, name, avgRating, sla, cuisines, areaName } =
     resData.info;
+
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="flex flex-col gap-3 transition-all ease-linear hover:scale-[.97] w-[250px]">
@@ -23,6 +28,9 @@ const RestaurantCard = ({ resData }) => {
           {cuisines.join(", ")}
         </p>
         <p className="text-base font-light text-gray-500">{areaName}</p>
+        <p className="text-base font-light text-green-500">
+          User: {loggedInUser}
+        </p>
       </div>
     </div>
   );

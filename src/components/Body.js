@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { API_URL } from "../utils/constants";
 
@@ -6,11 +6,13 @@ import RestaurantCard, { withDiscountLabel } from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { getRestaurantUrl } from "../utils/urls";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
   const [resList, setResList] = useState([]);
   const [filteredResList, setFilteredResList] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   const RestaurantCardPromoted = withDiscountLabel(RestaurantCard);
 
@@ -68,6 +70,12 @@ const Body = () => {
         >
           ⭐️ Ratings 4+
         </button>
+        <input
+          type="text"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+          className="border-[1px] border-black p-2 h-9 rounded-lg"
+        />
       </div>
       <div className="flex gap-10 flex-wrap justify-start">
         {!filteredResList?.length
