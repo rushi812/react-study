@@ -1,8 +1,14 @@
 import clsx from "clsx";
 import { IMAGE_URL } from "../utils/constants";
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 
 const MenuItemsList = ({ itemsList }) => {
-  console.log(itemsList);
+  const dispatch = useDispatch();
+  const handleAddItem = () => {
+    dispatch(addItem("pizza"));
+  };
+
   return (
     <div className="mt-4 flex flex-col gap-4">
       {itemsList.map((item, index) => {
@@ -40,11 +46,19 @@ const MenuItemsList = ({ itemsList }) => {
                   {info.description}
                 </p>
               </div>
-              <div className="w-3/12 h-36 rounded-lg overflow-hidden ml-14">
-                <img
-                  src={`${IMAGE_URL}/${info.imageId}`}
-                  className="w-full h-full object-cover object-center"
-                />
+              <div className="relative w-3/12 h-36 ml-14">
+                <div className="w-full h-full rounded-lg overflow-hidden">
+                  <img
+                    src={`${IMAGE_URL}/${info.imageId}`}
+                    className="w-full h-full object-cover object-center"
+                  />
+                  <button
+                    className="absolute -bottom-5 left-1/2 -translate-x-1/2 bg-white hover:bg-gray-100 w-[120px] p-2 rounded-md text-green-500 font-bold border-[1px] border-gray-200"
+                    onClick={handleAddItem}
+                  >
+                    ADD
+                  </button>
+                </div>
               </div>
             </div>
             {index !== itemsList?.length - 1 && <hr className="my-5" />}

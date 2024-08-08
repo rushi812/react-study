@@ -9,13 +9,15 @@ import {
 } from "../utils/urls";
 import useOnlineStatus from "../hooks/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [btnName, setBtnName] = useState("Login");
   const onlineStatus = useOnlineStatus();
-
   const { loggedInUser } = useContext(UserContext);
+  const cartItems = useSelector((state) => state.cart.items);
 
+  console.log("cartItems", cartItems);
   return (
     <div className="flex justify-between items-center shadow-lg p-4 bg-orange-100">
       <div className="w-16 rounded-full overflow-hidden">
@@ -37,7 +39,7 @@ const Header = () => {
             <Link to={getGroceryUrl()}>Grocery</Link>
           </li>
           <li className="px-4 transition-all ease-linear hover:text-orange-400">
-            Cart
+            Cart - ({cartItems.length} item)
           </li>
         </ul>
         <button
