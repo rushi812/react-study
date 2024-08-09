@@ -3,6 +3,7 @@ import { LOGO_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import {
   getAboutUrl,
+  getCartUrl,
   getContactUrl,
   getGroceryUrl,
   getHomeUrl,
@@ -17,7 +18,6 @@ const Header = () => {
   const { loggedInUser } = useContext(UserContext);
   const cartItems = useSelector((state) => state.cart.items);
 
-  console.log("cartItems", cartItems);
   return (
     <div className="flex justify-between items-center shadow-lg p-4 bg-orange-100">
       <div className="w-16 rounded-full overflow-hidden">
@@ -39,7 +39,7 @@ const Header = () => {
             <Link to={getGroceryUrl()}>Grocery</Link>
           </li>
           <li className="px-4 transition-all ease-linear hover:text-orange-400">
-            Cart - ({cartItems.length} item)
+            <Link to={getCartUrl()}>Cart ({cartItems.length})</Link>
           </li>
         </ul>
         <button

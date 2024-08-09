@@ -28,9 +28,12 @@ const RestaurantCard = ({ resData }) => {
           {cuisines.join(", ")}
         </p>
         <p className="text-base font-light text-gray-500">{areaName}</p>
-        <p className="text-base font-light text-green-500">
-          User: {loggedInUser}
-        </p>
+        {loggedInUser && (
+          <p className="text-base font-light text-gray-500">
+            User:{" "}
+            <span className="text-green-500 font-bold">{loggedInUser}</span>
+          </p>
+        )}
       </div>
     </div>
   );
