@@ -1,7 +1,7 @@
 {
-  "name": "episode1",
+  "name": "food-ordering-app",
   "version": "1.0.0",
-  "description": "React JS Episode 1",
+  "description": "Food Ordering App",
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
